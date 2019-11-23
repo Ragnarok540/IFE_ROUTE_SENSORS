@@ -1,1 +1,49 @@
-<p>home works!</p>
+<form (ngSubmit)="newTask(form)" #form="ngForm" class="fadeIn fast pb-5">
+
+  <h5>Origen</h5>
+  <div class="container-fluid border rounded p-2">
+    <div class="form-row p-2">
+      <div class="form-group col-sm">
+        <label for="paisOrigenSelect"><h5>País</h5></label>
+        <select class="form-control" id="paisOrigenSelect" name="paisOrigen"  (change)="paisOrigenSelected()">
+          <option [value]="u" *ngFor="let u of paises_origen" >{{ u }}</option>
+        </select>
+      </div>
+      <div class="form-group col-sm">
+        <label for="aeroOrigenSelect"><h5>Aeropuerto</h5></label>
+        <select class="form-control" id="aeroOrigenSelect" name="aeroOrigen" >
+          <option [value]="fib" *ngFor="let fib of fibonacci" >{{fib}}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+  <h5>Destino</h5>
+  <div class="container-fluid border rounded p-2">
+    <div class="form-row p-2">
+      <div class="form-group col-sm">
+        <label for="paisDestinoSelect"><h5>País</h5></label>
+        <select class="form-control" id="paisDestinoSelect" name="paisDestino" (change)="paisDestinoSelected()">
+          <option [value]="u" *ngFor="let u of paises_destino" >{{ u }}</option>
+        </select>
+      </div>
+      <div class="form-group col-sm">
+        <label for="aerDestinoSelect"><h5>Aeropuerto</h5></label>
+        <select class="form-control" id="aeroDestinoSelect" name="aeroDestino" >
+          <option [value]="fib" *ngFor="let fib of fibonacci" >{{fib}}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="form-row">
+    <div class="form-group col-sm">
+      <button [disabled]="!form.valid" type="submit" class="btn btn-outline-dark btn-block"><span octicon="cloud-upload"></span> Iniciar Simulación</button>
+    </div>
+  </div>
+
+</form>
