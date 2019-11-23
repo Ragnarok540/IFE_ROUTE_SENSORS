@@ -14,11 +14,36 @@ export class HomeComponent implements OnInit {
   paises_origen: string[];
   paises_destino: string[];
   
-  //aero_origen: string;
-  //aero_destino: string;
-  
   aeropuertos_origen: Airport[];
   aeropuertos_destino: Airport[];
+
+  aero_origen: Airport = {
+    airport_id: "",
+    name: "",
+    city: "",
+    country: "",
+    iata: "",
+    icao: "",
+    latitude: "",
+    longitude: "",
+    altitude: "",
+    timezone: "",
+    timezone_text: ""
+  };
+
+  aero_destino: Airport = {
+    airport_id: "",
+    name: "",
+    city: "",
+    country: "",
+    iata: "",
+    icao: "",
+    latitude: "",
+    longitude: "",
+    altitude: "",
+    timezone: "",
+    timezone_text: ""
+  };
 
   constructor( private router: Router,
                private databaseService: DatabaseService  ) { }
@@ -45,6 +70,19 @@ export class HomeComponent implements OnInit {
     this.databaseService.getAirports(pais_destino).subscribe( aeropuertos => {
         this.aeropuertos_destino = aeropuertos;
     });
+  }
+
+  aeroOrigenSelected(aero_id) {
+    this.aero_origen = this.aeropuertos_origen.filter(x => x.airport_id === aero_id)[0];
+  }
+
+  aeroDestinoSelected(aero_id) {
+    this.aero_destino = this.aeropuertos_destino.filter(x => x.airport_id === aero_id)[0];
+  }
+
+  iniciarSimulacion(form) {
+    console.log(this.aero_origen.name);
+    console.log(this.aero_destino.name);
   }
 
 }
