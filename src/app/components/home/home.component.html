@@ -5,14 +5,14 @@
     <div class="form-row p-2">
       <div class="form-group col-sm">
         <label for="paisOrigenSelect"><h5>País</h5></label>
-        <select class="form-control" id="paisOrigenSelect" name="paisOrigen"  (change)="paisOrigenSelected()">
-          <option [value]="u" *ngFor="let u of paises_origen" >{{ u }}</option>
+        <select class="form-control" id="paisOrigenSelect" name="paisOrigen" [(ngModel)]="pais_origen" #p_origen="ngModel" (change)="paisOrigenSelected(pais_origen)">
+          <option [value]="pais_origen" *ngFor="let pais_origen of paises_origen" >{{ pais_origen }}</option>
         </select>
       </div>
       <div class="form-group col-sm">
         <label for="aeroOrigenSelect"><h5>Aeropuerto</h5></label>
         <select class="form-control" id="aeroOrigenSelect" name="aeroOrigen" >
-          <option [value]="fib" *ngFor="let fib of fibonacci" >{{fib}}</option>
+          <option [value]="aero_origen" *ngFor="let aero_origen of aeropuertos_origen" >{{aero_origen.city}} - {{aero_origen.iata}} - {{aero_origen.name}}</option>
         </select>
       </div>
     </div>
@@ -25,14 +25,14 @@
     <div class="form-row p-2">
       <div class="form-group col-sm">
         <label for="paisDestinoSelect"><h5>País</h5></label>
-        <select class="form-control" id="paisDestinoSelect" name="paisDestino" (change)="paisDestinoSelected()">
-          <option [value]="u" *ngFor="let u of paises_destino" >{{ u }}</option>
+        <select class="form-control" id="paisDestinoSelect" name="paisDestino" [(ngModel)]="pais_destino" #p_destino="ngModel" (change)="paisDestinoSelected(pais_destino)">
+          <option [value]="pais_destino" *ngFor="let pais_destino of paises_destino" >{{ pais_destino }}</option>
         </select>
       </div>
       <div class="form-group col-sm">
         <label for="aerDestinoSelect"><h5>Aeropuerto</h5></label>
         <select class="form-control" id="aeroDestinoSelect" name="aeroDestino" >
-          <option [value]="fib" *ngFor="let fib of fibonacci" >{{fib}}</option>
+          <option [value]="aero_destino" *ngFor="let aero_destino of aeropuertos_destino" >{{aero_destino.city}} - {{aero_destino.iata}} - {{aero_destino.name}}</option>
         </select>
       </div>
     </div>
