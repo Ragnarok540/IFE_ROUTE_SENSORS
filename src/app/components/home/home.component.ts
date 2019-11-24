@@ -103,8 +103,12 @@ export class HomeComponent implements OnInit {
     }
 
     this.simulationService.startSimulation(coordinates).subscribe( res => {
+
       console.log(this.aero_origen.name);
       console.log(this.aero_destino.name);
+
+      this.router.navigate(['/dashboard']);
+
     });
 
   }

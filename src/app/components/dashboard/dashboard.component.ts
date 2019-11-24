@@ -18,6 +18,10 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   speed;
   ext_temp;
   int_temp;
+  time_current;
+  time_remaining;
+  location;
+  marker;
 
   constructor( private simulationService: SimulationService ) { }
 
@@ -34,9 +38,12 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   private initMap(): void {
     this.map = L.map('map', {
-      center: [ 39.8282, -98.5795 ],
-      zoom: 3
+      center: [ 0, 0 ],
+      zoom: 1
     });
+
+  
+
   }
 
   ngOnInit() {
@@ -60,12 +67,33 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         this.int_temp = temp.message;
       });
 
+      this.simulationService.getCurrentTime().subscribe( time => {
+        this.time_current = this.secondsToString(time.message);
+      });
+
+      this.simulationService.getRemainingTime().subscribe( time => {
+        this.time_remaining = this.secondsToString(time.message);
+      });
+
+      this.simulationService.getLocation().subscribe( location => {
+        this.marker = L.marker([location.message[0], location.message[1]]).addTo(this.map);
+        this.map.panTo([location.message[0], location.message[1]])
+      });
+
     });
   
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  secondsToString( seconds: string ) {
+    var num = parseFloat(seconds);
+    var hour = num / 3600;
+    var min = (hour % 1) * 60;
+    var sec = (min % 1) * 60;
+    return `${Math.floor(hour)} h ${Math.floor(min)} m ${Math.floor(sec)} s`
   }
 
 }
