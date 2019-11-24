@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { DatabaseService } from '../../services/database.service';
+import { SimulationService } from '../../services/simulation.service';
 import { Airport } from '../../interfaces/airport';
+import { Coordinates } from '../../interfaces/coordinates';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +12,8 @@ import { Airport } from '../../interfaces/airport';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
+  validation : boolean = false;
 
   paises_origen: string[];
   paises_destino: string[];
@@ -46,7 +50,8 @@ export class HomeComponent implements OnInit {
   };
 
   constructor( private router: Router,
-               private databaseService: DatabaseService  ) { }
+               private databaseService: DatabaseService,
+               private simulationService: SimulationService ) { }
 
   ngOnInit() {
 
@@ -64,25 +69,44 @@ export class HomeComponent implements OnInit {
     this.databaseService.getAirports(pais_origen).subscribe( aeropuertos => {
         this.aeropuertos_origen = aeropuertos;
     });
+
+    this.validation = false;
   }
 
   paisDestinoSelected(pais_destino) {
     this.databaseService.getAirports(pais_destino).subscribe( aeropuertos => {
         this.aeropuertos_destino = aeropuertos;
     });
+
+    this.validation = false;
   }
 
   aeroOrigenSelected(aero_id) {
     this.aero_origen = this.aeropuertos_origen.filter(x => x.airport_id === aero_id)[0];
+
+    this.validation = this.aero_origen.airport_id != this.aero_destino.airport_id;
   }
 
   aeroDestinoSelected(aero_id) {
     this.aero_destino = this.aeropuertos_destino.filter(x => x.airport_id === aero_id)[0];
+
+    this.validation = this.aero_origen.airport_id != this.aero_destino.airport_id;
   }
 
   iniciarSimulacion(form) {
-    console.log(this.aero_origen.name);
-    console.log(this.aero_destino.name);
+
+    var coordinates: Coordinates = {
+      lat1: this.aero_origen.latitude,
+      lon1: this.aero_origen.longitude,
+      lat2: this.aero_destino.latitude,
+      lon2: this.aero_destino.longitude
+    }
+
+    this.simulationService.startSimulation(coordinates).subscribe( res => {
+      console.log(this.aero_origen.name);
+      console.log(this.aero_destino.name);
+    });
+
   }
 
 }

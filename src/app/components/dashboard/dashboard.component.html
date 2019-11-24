@@ -1,1 +1,83 @@
-<p>dashboard works!</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm">
+      <div class="row">
+        <div class="col-sm">
+
+            <div class="card bg-light mb-3" style="max-width: 18rem;">
+              <div class="card-header">Tiempo Restante</div>
+              <div class="card-body">
+                <h5 class="card-title">Light card title</h5>
+                <p class="card-text">Some quick example text.</p>
+              </div>
+            </div>
+
+        </div>
+        <div class="col-sm">
+
+            <div class="card bg-light mb-3" style="max-width: 18rem;">
+              <div class="card-header">Tiempo de Vuelo</div>
+              <div class="card-body">
+                <h5 class="card-title">Light card title</h5>
+                <p class="card-text">Some quick example text.</p>
+              </div>
+            </div>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm">
+
+            <div class="card bg-light mb-3" style="max-width: 18rem;">
+              <div class="card-header">Tempertura Interior</div>
+              <div class="card-body">
+                <h5 class="card-title">{{ int_temp | number:'1.0-2'}} °C</h5>
+              </div>
+            </div>
+
+        </div>
+        <div class="col-sm">
+
+            <div class="card bg-light mb-3" style="max-width: 18rem;">
+              <div class="card-header">Temperatura Exterior</div>
+              <div class="card-body">
+                <h5 class="card-title">{{ ext_temp | number:'1.0-2'}} °C</h5>
+              </div>
+            </div>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm">
+
+            <div class="card bg-light mb-3" style="max-width: 18rem;">
+              <div class="card-header">Altura</div>
+              <div class="card-body">
+                <h5 class="card-title">{{ altitude | number:'1.0-2'}} m</h5>
+              </div>
+            </div>
+
+        </div>
+        <div class="col-sm">
+
+            <div class="card bg-light mb-3" style="max-width: 18rem;">
+              <div class="card-header">Velocidad</div>
+              <div class="card-body">
+                <h5 class="card-title">{{ speed * 3.6 | number:'1.0-2'}} km/h</h5>
+              </div>
+            </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-sm">
+
+        <div class="map-container">
+          <div class="map-frame">
+            <div id="map"></div>
+          </div>
+        </div>
+
+    </div>
+  </div>
+</div>
