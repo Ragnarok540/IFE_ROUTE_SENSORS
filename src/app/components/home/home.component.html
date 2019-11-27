@@ -40,6 +40,17 @@
 
   <br>
 
+  <h5>Velocidad</h5>
+  <div class="container-fluid border rounded p-2">
+
+      <div class="form-group">
+        <label for="formControlRange"><h5>Mach {{velocidad}}</h5></label>
+        <input type="range" class="form-control-range" id="formControlRange" name="velocidad" [(ngModel)]="velocidad" max="1000" min="1">
+      </div>
+
+  </div>
+  <br>
+
   <div class="form-row">
     <div class="form-group col-sm">
       <button [disabled]="!validation || !form.valid" type="submit" class="btn btn-outline-dark btn-block"><span octicon="cloud-upload"></span> Iniciar Simulación</button>

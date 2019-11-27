@@ -49,6 +49,8 @@ export class HomeComponent implements OnInit {
     timezone_text: ""
   };
 
+  velocidad: number = 1;
+
   constructor( private router: Router,
                private databaseService: DatabaseService,
                private simulationService: SimulationService ) { }
@@ -99,7 +101,8 @@ export class HomeComponent implements OnInit {
       lat1: this.aero_origen.latitude,
       lon1: this.aero_origen.longitude,
       lat2: this.aero_destino.latitude,
-      lon2: this.aero_destino.longitude
+      lon2: this.aero_destino.longitude,
+      mach: this.velocidad
     }
 
     this.simulationService.startSimulation(coordinates).subscribe( res => {

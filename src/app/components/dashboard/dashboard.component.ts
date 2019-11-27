@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { interval, Subscription } from 'rxjs';
 import { SimulationService } from '../../services/simulation.service';
 
@@ -23,7 +24,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   location;
   marker;
 
-  constructor( private simulationService: SimulationService ) { }
+  constructor( private router: Router,
+               private simulationService: SimulationService ) { }
 
   ngAfterViewInit(): void {
     this.initMap();
@@ -76,8 +78,14 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       });
 
       this.simulationService.getLocation().subscribe( location => {
+
+        if (location.message[0] == 999 && location.message[1] == 999) {
+          this.router.navigate(['/home']);
+        }
+
         this.marker = L.marker([location.message[0], location.message[1]]).addTo(this.map);
-        this.map.panTo([location.message[0], location.message[1]])
+        this.map.panTo([location.message[0], location.message[1]]);
+
       });
 
     });
