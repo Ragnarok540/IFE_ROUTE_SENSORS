@@ -110,6 +110,9 @@ export class HomeComponent implements OnInit {
       console.log(this.aero_origen.name);
       console.log(this.aero_destino.name);
 
+      sessionStorage.setItem('origen', JSON.stringify(this.aero_origen));
+      sessionStorage.setItem('destino', JSON.stringify(this.aero_destino));
+
       this.router.navigate(['/dashboard']);
 
     });

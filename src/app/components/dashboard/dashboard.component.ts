@@ -98,6 +98,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   secondsToString( seconds: string ) {
     var num = parseFloat(seconds);
+    if (num < 0) return "0 h 0 m 0 s";
     var hour = num / 3600;
     var min = (hour % 1) * 60;
     var sec = (min % 1) * 60;

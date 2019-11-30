@@ -1,2 +1,8 @@
-<p>el avion ha llegado a su destino!</p>
-<button type="button" class="btn btn-primary" routerLink="/home">Regresar</button>
+<div class="jumbotron">
+  <h1 class="display-4">¡Simulación Finalizada!</h1>
+  <p class="lead">La simulación del vuelo entre los aeropuertos de <strong>{{origen.city}}</strong> y
+    <strong>{{destino.city}}</strong> finalizó correctamente.</p>
+  <hr class="my-4">
+  <p>Pulse el botón Regresar para iniciar una nueva simulación.</p>
+  <button type="button" class="btn btn-outline-dark btn-block" routerLink="/home">Regresar</button>
+</div>
