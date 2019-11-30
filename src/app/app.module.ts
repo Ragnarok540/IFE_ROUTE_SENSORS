@@ -12,6 +12,7 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { OcticonDirective } from './directives/octicon.directive';
+import { FinalDestinationComponent } from './components/final-destination/final-destination.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { OcticonDirective } from './directives/octicon.directive';
     NavbarComponent,
     HomeComponent,
     DashboardComponent,
-    OcticonDirective
+    OcticonDirective,
+    FinalDestinationComponent
   ],
   imports: [
     BrowserModule,

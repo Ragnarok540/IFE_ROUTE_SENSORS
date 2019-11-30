@@ -80,7 +80,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       this.simulationService.getLocation().subscribe( location => {
 
         if (location.message[0] == 999 && location.message[1] == 999) {
-          this.router.navigate(['/home']);
+          this.router.navigate(['/final-destination']);
         }
 
         this.marker = L.marker([location.message[0], location.message[1]]).addTo(this.map);
