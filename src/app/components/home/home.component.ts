@@ -50,6 +50,10 @@ export class HomeComponent implements OnInit {
   };
 
   velocidad: number = 1;
+  nombre: string = "bbb";
+  apellido: string = "bbb";
+  cedula: string = "";
+  edad: string = "";
 
   constructor( private router: Router,
                private databaseService: DatabaseService,

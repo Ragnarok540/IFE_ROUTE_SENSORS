@@ -1,5 +1,85 @@
 <form (ngSubmit)="iniciarSimulacion(form)" #form="ngForm" class="fadeIn fast pb-5">
 
+  <h5>Piloto</h5>
+
+  <div class="container-fluid border rounded p-2">
+    <div class="form-row p-2">
+      <div class="form-group col-sm">
+        <label for="name"><h5>Nombre</h5></label>
+
+        <input type="text" class="form-control" id="name" placeholder="Nombre" required maxlength="30" minlength="3" ngModel name="name" #name="ngModel">
+
+        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger" role="alert">
+          <div *ngIf="name.errors.required">
+            El nombre es requerido.
+          </div>
+          <div *ngIf="name.errors.minlength">
+            El nombre no debe tener más de 30 caracteres de largo.
+          </div>
+          <div *ngIf="name.errors.minlength">
+            El nombre debe tener al menos 3 caracteres de largo.
+          </div>
+        </div>
+
+      </div>
+      <div class="form-group col-sm">
+        <label for="apellido"><h5>Apellido</h5></label>
+
+        <input type="text" class="form-control" id="apellido" placeholder="Apellido" required maxlength="30" minlength="3" ngModel name="apellido" #apellido="ngModel">
+
+        <div *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)" class="alert alert-danger" role="alert">
+          <div *ngIf="apellido.errors.required">
+            El apellido es requerido.
+          </div>
+          <div *ngIf="apellido.errors.minlength">
+            El apellido no debe tener más de 30 caracteres de largo.
+          </div>
+          <div *ngIf="apellido.errors.minlength">
+            El apellido debe tener al menos 3 caracteres de largo.
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="form-row p-2">
+      <div class="form-group col-sm">
+        <label for="cedula"><h5>Cédula de Ciudadanía</h5></label>
+
+        <input type="text" class="form-control" id="cedula" placeholder="Cédula de Ciudadanía" required pattern="[1-9][0-9]{6,10}" ngModel name="cedula" #cedula="ngModel">
+
+        <div *ngIf="cedula.invalid && (cedula.dirty || cedula.touched)" class="alert alert-danger" role="alert">
+          <div *ngIf="cedula.errors.required">
+            La cédula de ciudadanía es requerida.
+          </div>
+          <div *ngIf="cedula.errors">
+            La cédula sólo puede tener números y debe tener entre 7 y 11 dígitos.
+          </div>
+        </div>
+
+      </div>
+      <div class="form-group col-sm">
+        <label for="edad"><h5>Edad</h5></label>
+
+        <input type="text" class="form-control" id="edad" placeholder="Edad" name="edad" required pattern="1[8-9]|2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|8[0-9]|9[0-9]" ngModel #edad="ngModel">
+
+        <div *ngIf="edad.invalid && (edad.dirty || edad.touched)" class="alert alert-danger" role="alert">
+          <div *ngIf="edad.errors.required">
+            La edad es requerida.
+          </div>
+          <div *ngIf="edad.errors">
+            La edad sólo puede tener números y debe estar entre 18 y 99.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <br>
+
   <h5>Origen</h5>
   <div class="container-fluid border rounded p-2">
     <div class="form-row p-2">
