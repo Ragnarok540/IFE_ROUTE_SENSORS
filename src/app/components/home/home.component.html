@@ -7,17 +7,14 @@
       <div class="form-group col-sm">
         <label for="name"><h5>Nombre</h5></label>
 
-        <input type="text" class="form-control" id="name" placeholder="Nombre" required maxlength="30" minlength="3" ngModel name="name" #name="ngModel">
+        <input type="text" class="form-control" id="name" placeholder="Nombre" required pattern="[áéíóúüñÁÉÍÓÚÜÑA-Za-z\s]{3,30}" ngModel name="name" #name="ngModel">
 
         <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger" role="alert">
           <div *ngIf="name.errors.required">
             El nombre es requerido.
           </div>
-          <div *ngIf="name.errors.minlength">
-            El nombre no debe tener más de 30 caracteres de largo.
-          </div>
-          <div *ngIf="name.errors.minlength">
-            El nombre debe tener al menos 3 caracteres de largo.
+          <div *ngIf="name.errors">
+            El nombre sólo puede tener letras y espacios, y debe tener entre 3 y 30 caracteres de largo.
           </div>
         </div>
 
@@ -25,17 +22,14 @@
       <div class="form-group col-sm">
         <label for="apellido"><h5>Apellido</h5></label>
 
-        <input type="text" class="form-control" id="apellido" placeholder="Apellido" required maxlength="30" minlength="3" ngModel name="apellido" #apellido="ngModel">
+        <input type="text" class="form-control" id="apellido" placeholder="Apellido" required pattern="[áéíóúüñÁÉÍÓÚÜÑA-Za-z\s]{3,30}" ngModel name="apellido" #apellido="ngModel">
 
         <div *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)" class="alert alert-danger" role="alert">
           <div *ngIf="apellido.errors.required">
             El apellido es requerido.
           </div>
-          <div *ngIf="apellido.errors.minlength">
-            El apellido no debe tener más de 30 caracteres de largo.
-          </div>
-          <div *ngIf="apellido.errors.minlength">
-            El apellido debe tener al menos 3 caracteres de largo.
+          <div *ngIf="apellido.errors">
+            El apellido sólo puede tener letras y espacios, y debe tener entre 3 y 30 caracteres de largo.
           </div>
         </div>
 
