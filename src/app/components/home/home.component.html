@@ -41,7 +41,7 @@
       <div class="form-group col-sm">
         <label for="cedula"><h5>Cédula de Ciudadanía</h5></label>
 
-        <input type="text" class="form-control" id="cedula" placeholder="Cédula de Ciudadanía" required pattern="[1-9][0-9]{6,10}" ngModel name="cedula" #cedula="ngModel">
+        <input type="text" class="form-control" id="cedula" placeholder="Cédula de Ciudadanía" required pattern="^([1-9][0-9]{6,10})$" ngModel name="cedula" #cedula="ngModel">
 
         <div *ngIf="cedula.invalid && (cedula.dirty || cedula.touched)" class="alert alert-danger" role="alert">
           <div *ngIf="cedula.errors.required">
@@ -56,7 +56,7 @@
       <div class="form-group col-sm">
         <label for="edad"><h5>Edad</h5></label>
 
-        <input type="text" class="form-control" id="edad" placeholder="Edad" name="edad" required pattern="1[8-9]|2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|8[0-9]|9[0-9]" ngModel #edad="ngModel">
+        <input type="text" class="form-control" id="edad" placeholder="Edad" name="edad" required pattern="^(1[8-9]|[2-9][0-9])$" ngModel #edad="ngModel">
 
         <div *ngIf="edad.invalid && (edad.dirty || edad.touched)" class="alert alert-danger" role="alert">
           <div *ngIf="edad.errors.required">
@@ -85,7 +85,7 @@
       </div>
       <div class="form-group col-sm">
         <label for="aeroOrigenSelect"><h5>Aeropuerto</h5></label>
-        <select class="form-control" id="aeroOrigenSelect" name="id" [(ngModel)]="aero_origen.airport_id" #id="ngModel" (change)="aeroOrigenSelected(this.aero_origen.airport_id)" required>
+        <select class="form-control" id="aeroOrigenSelect" name="id" [(ngModel)]="aero_origen.airport_id" #id="ngModel" (change)="aeroOrigenSelected(this.aero_origen.airport_id)" required [disabled]="aero_origen_disabled">
           <option [value]="aero_origen.airport_id" *ngFor="let aero_origen of aeropuertos_origen" >{{aero_origen.city}} - {{aero_origen.iata}} - {{aero_origen.name}}</option>
         </select>
       </div>
@@ -105,7 +105,7 @@
       </div>
       <div class="form-group col-sm">
         <label for="aerDestinoSelect"><h5>Aeropuerto</h5></label>
-        <select class="form-control" id="aeroDestinoSelect" name="aeroDestino" [(ngModel)]="aero_destino.airport_id" #id="ngModel" (change)="aeroDestinoSelected(this.aero_destino.airport_id)" required>
+        <select class="form-control" id="aeroDestinoSelect" name="aeroDestino" [(ngModel)]="aero_destino.airport_id" #id="ngModel" (change)="aeroDestinoSelected(this.aero_destino.airport_id)" required [disabled]="aero_destino_disabled">
           <option [value]="aero_destino.airport_id" *ngFor="let aero_destino of aeropuertos_destino" >{{aero_destino.city}} - {{aero_destino.iata}} - {{aero_destino.name}}</option>
         </select>
       </div>

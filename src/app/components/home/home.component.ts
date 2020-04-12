@@ -54,6 +54,8 @@ export class HomeComponent implements OnInit {
   apellido: string = "bbb";
   cedula: string = "";
   edad: string = "";
+  aero_origen_disabled = true;
+  aero_destino_disabled = true;
 
   constructor( private router: Router,
                private databaseService: DatabaseService,
@@ -77,6 +79,7 @@ export class HomeComponent implements OnInit {
     });
 
     this.validation = false;
+    this.aero_origen_disabled = false;
   }
 
   paisDestinoSelected(pais_destino) {
@@ -85,6 +88,7 @@ export class HomeComponent implements OnInit {
     });
 
     this.validation = false;
+    this.aero_destino_disabled = false;
   }
 
   aeroOrigenSelected(aero_id) {
